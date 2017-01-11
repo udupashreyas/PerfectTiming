@@ -6,7 +6,7 @@ var countTarget;
 function setTimer() {
     countTarget = document.getElementById("countTarget").value;
 }
-function startWatch( ) {
+function startUpWatch( ) {
 	if ( seconds === 60 ) { 
 		seconds = 0; 
 		minutes = minutes + 1;
@@ -24,17 +24,17 @@ function startWatch( ) {
 	getMins = minutes + ' minutes ';
 	getSecs = seconds + ' seconds';
 	var x = document .getElementById("timer");
-	x.innerHTML = 'Time: ' + getDays + getHours + getMins + getSecs; 
+	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs; 
 	seconds++;
-	clearTime = setTimeout( "startWatch( )", 1000 );
+	clearTime = setTimeout( "startUpWatch( )", 1000 );
 }
-function startTime( ) { 
+function startUpTime( ) { 
  	this.style.display = "none";
  	var showStop = document.getElementById ('stop'); 
 	showStop.style.display = "inline-block";
- 	startWatch( );
+ 	startUpWatch( );
 } 
-function stopTime( ) { 
+function stopUpTime( ) { 
 	if ( seconds !== 0 || minutes !== 0 || hours !== 0 ) { 
 		var showStart = document.getElementById ('start'); 
 		showStart.style.display = "inline-block"; 
@@ -43,7 +43,7 @@ function stopTime( ) {
 		clearTimeout( clearTime ); 
 	} 
 } 
-function resetTime() {
+function resetUpTime() {
 	seconds = 0; 
 	minutes = 0; 
 	hours = 0;
@@ -53,18 +53,18 @@ function resetTime() {
 	getHours = '0 hours ';
 	getDays = '0 days '; 
 	var x = document.getElementById ("timer"); 
-	var resetTime = getDays + getHours + getMins + getSecs; 
-	x.innerHTML = resetTime;
+	var resetUpTime = " Time : " + getDays + getHours + getMins + getSecs; 
+	x.innerHTML = resetUpTime;
 }
 window.addEventListener( 'load', function ( ) { 
 	var start = document.getElementById("start");
-	start.addEventListener( 'click', startTime );
+	start.addEventListener( 'click', startUpTime );
 });
 window.addEventListener( 'load', function ( ) { 
 	var stop = document.getElementById ("stop"); 
-	stop.addEventListener( 'click', stopTime ); 
+	stop.addEventListener( 'click', stopUpTime ); 
 });
 window.addEventListener( 'load', function ( ) { 
 	var stop = document.getElementById ("reset"); 
-	stop.addEventListener( 'click', resetTime ); 
+	stop.addEventListener( 'click', resetUpTime ); 
 }); 
