@@ -56,16 +56,16 @@ function stopTime( ) {
 		var time = gethours + getmins + getsecs; 
 		fulltime.innerHTML = 'Fulltime: ' + time; 
 		// reset the stop watch 
-		seconds = 0; 
-		minutes = 0; 
-		hours = 0; 
-		getsecs = '0' + seconds; 
-		getmins = '0' + minutes + ': '; 
-		gethours = '0' + hours + ': '; 
-		/* display the stopwatch after it's been stopped */ 
-		var x = document.getElementById ("timer"); 
-		var stopTime = gethours + getmins + getsecs; 
-		x.innerHTML = stopTime; 
+		// seconds = 0; 
+		// minutes = 0; 
+		// hours = 0; 
+		// getsecs = '0' + seconds; 
+		// getmins = '0' + minutes + ': '; 
+		// gethours = '0' + hours + ': '; 
+		//  display the stopwatch after it's been stopped  
+		// var x = document.getElementById ("timer"); 
+		// var stopTime = gethours + getmins + getsecs; 
+		// x.innerHTML = stopTime;
 		/* display all stop watch control buttons */ 
 		var showStart = document.getElementById ('start'); 
 		showStart.style.display = "inline-block"; 
@@ -80,6 +80,18 @@ function stopTime( ) {
 // if () } 
 // startTime() 
 /* you need to bind the startTime( ) function to any event type to keep the stop watch alive ! */ 
+function resetTime() {
+	seconds = 0; 
+	minutes = 0; 
+	hours = 0; 
+	getsecs = '0 seconds'; 
+	getmins = '0 minutes '; 
+	gethours = '0 hours '; 
+	/* display the stopwatch after it's been stopped */ 
+	var x = document.getElementById ("timer"); 
+	var resetTime = gethours + getmins + getsecs; 
+	x.innerHTML = resetTime;
+}
 window.addEventListener( 'load', function ( ) { 
 	var start = document.getElementById("start");
 	start.addEventListener( 'click', startTime );
@@ -87,5 +99,9 @@ window.addEventListener( 'load', function ( ) {
 window.addEventListener( 'load', function ( ) { 
 	var stop = document.getElementById ("stop"); 
 	stop.addEventListener( 'click', stopTime ); 
+});
+window.addEventListener( 'load', function ( ) { 
+	var stop = document.getElementById ("reset"); 
+	stop.addEventListener( 'click', resetTime ); 
 });
 // startwatch.js end 
