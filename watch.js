@@ -26,12 +26,23 @@ function startUpWatch( ) {
 	var x = document .getElementById("timer");
 	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs; 
 	seconds++;
+	if(seconds - 1 == countTarget) {
+		var hideStart = document.getElementById ('start'); 
+		hideStart.style.display = "none"; 
+		var hideStop = document.getElementById ("stop"); 
+		hideStop.style.display = "none";
+		var showReset = document.getElementById ('reset'); 
+		showReset.style.display = "inline-block";
+		return;
+	}
 	clearTime = setTimeout( "startUpWatch( )", 1000 );
 }
 function startUpTime( ) { 
  	this.style.display = "none";
  	var showStop = document.getElementById ('stop'); 
 	showStop.style.display = "inline-block";
+	var hideReset = document.getElementById ("reset"); 
+	hideReset.style.display = "none";
  	startUpWatch( );
 } 
 function stopUpTime( ) { 
@@ -39,7 +50,9 @@ function stopUpTime( ) {
 		var showStart = document.getElementById ('start'); 
 		showStart.style.display = "inline-block"; 
 		var hideStop = document.getElementById ("stop"); 
-		hideStop.style.display = "none";  
+		hideStop.style.display = "none";
+		var showReset = document.getElementById ('reset'); 
+		showReset.style.display = "inline-block";  
 		clearTimeout( clearTime ); 
 	} 
 } 
@@ -55,6 +68,8 @@ function resetUpTime() {
 	var x = document.getElementById ("timer"); 
 	var resetUpTime = " Time : " + getDays + getHours + getMins + getSecs; 
 	x.innerHTML = resetUpTime;
+	var showStart = document.getElementById ('start'); 
+	showStart.style.display = "inline-block";
 }
 window.addEventListener( 'load', function ( ) { 
 	var start = document.getElementById("start");
