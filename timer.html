@@ -6,13 +6,25 @@
  	<script src="watch.js"></script>
  </head> 
  <body>
- 	<p id="inputField">Please specify count target in seconds: <input type="number" id="countTarget"></p>
- 	<button onclick="setTimer()">Set target</button>
- 	<section id="stopWatch"> 
+ 	<h1 style="text-align:center;">Perfect Timing</h1>
+ 	<div id="userInput">
+ 		<h3 id="inputField">Please specify count target in seconds: </h3>
+ 		<input type="number" id="countTarget">
+ 		<button onclick="setTimer()">Set target</button>
+ 	</div>
+ 	<div id="stopWatch">
+ 		<h3>Clock 1 : Counts up to the specified target</h3>
  		<p id="timer"> Time : 0 days 0 hours 0 minutes 0 seconds </p> 
  		<button id="start"> Start </button> 
  		<button id="stop" style="display:none;"> Stop </button>
  		<button id="reset"> Reset </button>
- 	</section>
+ 	</div>
+ 	<div id="stopWatch">
+ 		<h3>Clock 2 : Counts down to zero from the specified target</h3> 
+ 		<p id="timerDown"> Time : 0 days 0 hours 0 minutes 0 seconds </p> 
+ 		<button id="startDown"> Start </button> 
+ 		<button id="stopDown" style="display:none;"> Stop </button>
+ 		<button id="resetDown"> Reset </button>
+ 	</div>
  </body> 
  </html> 
