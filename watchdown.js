@@ -49,15 +49,15 @@ function setDownTimer() {
     }
 }
 function startDownWatch( ) {
-	if ( secondsDown === -1 && (minutesDown !== 0 || hoursDown !== 0 || daysDown !== 0 )) { 
+	if ( secondsDown === -1 && (minutesDown !== 0 || hoursDown !== 0 || daysDown !== 0)) { 
 		secondsDown = 59; 
 		minutesDown = minutesDown - 1;
 	}
-	if ( minutesDown === -1 && hoursDown !== 0 && daysDown !== 0 ) { 
+	if ( minutesDown === -1 && (hoursDown !== 0 || daysDown !== 0 || secondsDown !== 0)) { 
 		minutesDown = 59; 
 		hoursDown = hoursDown - 1; 
 	}
-	if (hoursDown === -1 && daysDown !== 0) {
+	if (hoursDown === -1 && (daysDown !== 0 || minutesDown !== 0 || secondsDown !== 0)) {
 		hoursDown = 23;
 		daysDown = daysDown - 1;
 	};
