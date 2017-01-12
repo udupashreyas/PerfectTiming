@@ -1,6 +1,5 @@
 var clearTime;
 var seconds = 0, minutes = 0, hours = 0, days = 0;
-var clearState;
 var getSecs, getMins, getHours, getDays;
 var countTarget;
 function setTimer() {
