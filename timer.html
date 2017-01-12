@@ -4,13 +4,14 @@
  	<title> Perfect Timing </title> 
  	<link rel="stylesheet" type="text/css" href="timer.css">
  	<script src="watch.js"></script>
+ 	<script src="watchdown.js"></script>
  </head> 
  <body>
  	<h1 style="text-align:center;">Perfect Timing</h1>
  	<div id="userInput">
  		<h3 id="inputField">Please specify count target in seconds: </h3>
  		<input type="number" id="countTarget">
- 		<button onclick="setTimer()">Set target</button>
+ 		<button onclick="setTimer();setDownTimer()">Set target</button>
  	</div>
  	<div id="stopWatch">
  		<h3>Clock 1 : Counts up to the specified target</h3>
