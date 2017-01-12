@@ -10,18 +10,18 @@ function setDownTimer() {
     }
     else if(countTarget < 3600) {
     	seconds = countTarget % 60;
-    	minutes = countTarget / 60;
+    	minutes = Math.floor(countTarget / 60);
     }
     else if(countTarget < 3600 * 24) {
     	seconds = countTarget % 60;
-    	minutes = countTarget % 3600;
-    	hours = countTarget / 3600;
+    	minutes = Math.floor((countTarget % 3600) / 60);
+    	hours = Math.floor(countTarget / 3600);
     }
     else {
     	seconds = countTarget % 60;
-    	minutes = countTarget % 3600;
-    	hours = countTarget % (3600 * 24);
-    	days = countTarget / (3600 * 24);
+    	minutes = Math.floor((countTarget % 3600) / 60);
+    	hours = Math.floor((countTarget % 86400) / 3600);
+    	days = Math.floor(countTarget / (3600 * 24));
     }
     getDays = days + ' days ';
 	getHours = hours + ' hours ';
@@ -49,7 +49,7 @@ function startDownWatch( ) {
 	getSecs = seconds + ' seconds';
 	var x = document .getElementById("timer");
 	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs; 
-	seconds++;
+	seconds--;
 	if(seconds - 1 == countTarget) {
 		var hideStart = document.getElementById ('start'); 
 		hideStart.style.display = "none"; 
@@ -61,15 +61,15 @@ function startDownWatch( ) {
 	}
 	clearTime = setTimeout( "startUpWatch( )", 1000 );
 }
-function startUpTime( ) { 
+function startDownTime( ) { 
  	this.style.display = "none";
  	var showStop = document.getElementById ('stop'); 
 	showStop.style.display = "inline-block";
 	var hideReset = document.getElementById ("reset"); 
 	hideReset.style.display = "none";
- 	startUpWatch( );
+ 	startDownWatch( );
 } 
-function stopUpTime( ) { 
+function stopDownTime( ) { 
 	if ( seconds !== 0 || minutes !== 0 || hours !== 0 ) { 
 		var showStart = document.getElementById ('start'); 
 		showStart.style.display = "inline-block"; 
@@ -80,7 +80,7 @@ function stopUpTime( ) {
 		clearTimeout( clearTime ); 
 	} 
 } 
-function resetUpTime() {
+function resetDownTime() {
 	seconds = 0; 
 	minutes = 0; 
 	hours = 0;
@@ -96,14 +96,14 @@ function resetUpTime() {
 	showStart.style.display = "inline-block";
 }
 window.addEventListener( 'load', function ( ) { 
-	var start = document.getElementById("start");
-	start.addEventListener( 'click', startUpTime );
+	var start = document.getElementById("startDown");
+	start.addEventListener( 'click', startDownTime );
 });
 window.addEventListener( 'load', function ( ) { 
-	var stop = document.getElementById ("stop"); 
-	stop.addEventListener( 'click', stopUpTime ); 
+	var stop = document.getElementById ("stopDown"); 
+	stop.addEventListener( 'click', stopDownTime ); 
 });
 window.addEventListener( 'load', function ( ) { 
-	var stop = document.getElementById ("reset"); 
-	stop.addEventListener( 'click', resetUpTime ); 
+	var stop = document.getElementById ("resetDown"); 
+	stop.addEventListener( 'click', resetDownTime ); 
 }); 
