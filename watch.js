@@ -2,25 +2,33 @@ var clearTime;
 var seconds = 0, minutes = 0, hours = 0, days = 0;
 var getSecs, getMins, getHours, getDays;
 var countTarget;
+function isInt(n) {
+    return Number(n) === n && n % 1 === 0;
+}
 function setTimer() {
     countTarget = document.getElementById("countTarget").value;
-    var showReset = document.getElementById ('reset'); 
-	showReset.style.display = "inline-block";
-	var showStart = document.getElementById ('start'); 
-	showStart.style.display = "inline-block";
-	var hideTarget = document.getElementById ('target'); 
-	hideTarget.style.display = "none"; 
-	seconds = 0; 
-	minutes = 0; 
-	hours = 0;
-	days = 0;
-	getSecs = '0 seconds'; 
-	getMins = '0 minutes '; 
-	getHours = '0 hours ';
-	getDays = '0 days '; 
-	var x = document.getElementById ("timer"); 
-	var resetUpTime = " Time : " + getDays + getHours + getMins + getSecs; 
-	x.innerHTML = resetUpTime;
+    if(countTarget <= 0 || !isInt(parseInt(countTarget))) {
+    	alert("Please enter a positive integer");
+    }
+    else {
+    	var showReset = document.getElementById ('reset'); 
+		showReset.style.display = "inline-block";
+		var showStart = document.getElementById ('start'); 
+		showStart.style.display = "inline-block";
+		var hideTarget = document.getElementById ('target'); 
+		hideTarget.style.display = "none"; 
+		seconds = 0; 
+		minutes = 0; 
+		hours = 0;
+		days = 0;
+		getSecs = '0 seconds'; 
+		getMins = '0 minutes '; 
+		getHours = '0 hours ';
+		getDays = '0 days '; 
+		var x = document.getElementById ("timer"); 
+		var resetUpTime = " Time : " + getDays + getHours + getMins + getSecs; 
+		x.innerHTML = resetUpTime;
+    }
 }
 function startUpWatch( ) {
 	if ( seconds === 60 ) { 
@@ -36,9 +44,21 @@ function startUpWatch( ) {
 		days = days + 1;
 	};
 	getDays = days + ' days ';
+	if(days === 1) {
+	    getDays = days + ' day ';
+	}
 	getHours = hours + ' hours ';
+	if(hours === 1) {
+		getHours = hours + ' hour ';
+	}
 	getMins = minutes + ' minutes ';
+	if(minutes === 1) {
+		getMins = minutes + ' minute ';
+	}
 	getSecs = seconds + ' seconds';
+	if(seconds === 1) {
+		getSecs = seconds + ' second';
+	}
 	var x = document .getElementById("timer");
 	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs; 
 	seconds++;

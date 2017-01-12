@@ -4,35 +4,49 @@ var getSecs, getMins, getHours, getDays, origTime;
 var countTarget;
 function setDownTimer() {
     countTarget = document.getElementById("countTarget").value;
-    var showReset = document.getElementById ('resetDown'); 
-	showReset.style.display = "inline-block";
-	var showStart = document.getElementById ('startDown'); 
-	showStart.style.display = "inline-block";
-    if(countTarget < 60) {
-    	secondsDown = countTarget;
+    if(isInt(parseInt(countTarget)) && countTarget > 0) {
+    	var showReset = document.getElementById ('resetDown'); 
+		showReset.style.display = "inline-block";
+		var showStart = document.getElementById ('startDown'); 
+		showStart.style.display = "inline-block";
+	    if(countTarget < 60) {
+	    	secondsDown = countTarget;
+	    }
+	    else if(countTarget < 3600) {
+	    	secondsDown = countTarget % 60;
+	    	minutesDown = Math.floor(countTarget / 60);
+	    }
+	    else if(countTarget < 3600 * 24) {
+	    	secondsDown = countTarget % 60;
+	    	minutesDown = Math.floor((countTarget % 3600) / 60);
+	    	hoursDown = Math.floor(countTarget / 3600);
+	    }
+	    else {
+	    	secondsDown = countTarget % 60;
+	    	minutesDown = Math.floor((countTarget % 3600) / 60);
+	    	hoursDown = Math.floor((countTarget % 86400) / 3600);
+	    	daysDown = Math.floor(countTarget / (3600 * 24));
+	    }
+	    getDays = daysDown + ' days ';
+	    if(daysDown === 1) {
+	    	getDays = daysDown + ' day ';
+	    }
+		getHours = hoursDown + ' hours ';
+		if(hoursDown === 1) {
+			getHours = hoursDown + ' hour ';
+		}
+		getMins = minutesDown + ' minutes ';
+		if(minutesDown === 1) {
+			getMins = minutesDown + ' minute ';
+		}
+		getSecs = secondsDown + ' seconds';
+		if(secondsDown === 1) {
+			getSecs = secondsDown + ' second';
+		}
+		var x = document .getElementById("timerDown");
+		x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs;
+		origTime = 'Time : ' + getDays + getHours + getMins + getSecs;
     }
-    else if(countTarget < 3600) {
-    	secondsDown = countTarget % 60;
-    	minutesDown = Math.floor(countTarget / 60);
-    }
-    else if(countTarget < 3600 * 24) {
-    	secondsDown = countTarget % 60;
-    	minutesDown = Math.floor((countTarget % 3600) / 60);
-    	hoursDown = Math.floor(countTarget / 3600);
-    }
-    else {
-    	secondsDown = countTarget % 60;
-    	minutesDown = Math.floor((countTarget % 3600) / 60);
-    	hoursDown = Math.floor((countTarget % 86400) / 3600);
-    	daysDown = Math.floor(countTarget / (3600 * 24));
-    }
-    getDays = daysDown + ' days ';
-	getHours = hoursDown + ' hours ';
-	getMins = minutesDown + ' minutes ';
-	getSecs = secondsDown + ' seconds';
-	var x = document .getElementById("timerDown");
-	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs;
-	origTime = 'Time : ' + getDays + getHours + getMins + getSecs;
 }
 function startDownWatch( ) {
 	if ( secondsDown === -1 && (minutesDown !== 0 || hoursDown !== 0 || daysDown !== 0 )) { 
@@ -48,9 +62,21 @@ function startDownWatch( ) {
 		daysDown = daysDown - 1;
 	};
 	getDays = daysDown + ' days ';
+	if(daysDown === 1) {
+	   	getDays = daysDown + ' day ';
+	}
 	getHours = hoursDown + ' hours ';
+	if(hoursDown === 1) {
+		getHours = hoursDown + ' hour ';
+	}
 	getMins = minutesDown + ' minutes ';
+	if(minutesDown === 1) {
+		getMins = minutesDown + ' minute ';
+	}
 	getSecs = secondsDown + ' seconds';
+	if(secondsDown === 1) {
+		getSecs = secondsDown + ' second';
+	}
 	var x = document .getElementById("timerDown");
 	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs; 
 	secondsDown--;
