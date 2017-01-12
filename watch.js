@@ -4,6 +4,21 @@ var getSecs, getMins, getHours, getDays;
 var countTarget;
 function setTimer() {
     countTarget = document.getElementById("countTarget").value;
+    var showReset = document.getElementById ('reset'); 
+	showReset.style.display = "inline-block";
+	var showStart = document.getElementById ('start'); 
+	showStart.style.display = "inline-block";
+	seconds = 0; 
+	minutes = 0; 
+	hours = 0;
+	days = 0;
+	getSecs = '0 seconds'; 
+	getMins = '0 minutes '; 
+	getHours = '0 hours ';
+	getDays = '0 days '; 
+	var x = document.getElementById ("timer"); 
+	var resetUpTime = " Time : " + getDays + getHours + getMins + getSecs; 
+	x.innerHTML = resetUpTime;
 }
 function startUpWatch( ) {
 	if ( seconds === 60 ) { 

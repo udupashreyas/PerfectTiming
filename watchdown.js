@@ -4,6 +4,10 @@ var getSecs, getMins, getHours, getDays, origTime;
 var countTarget;
 function setDownTimer() {
     countTarget = document.getElementById("countTarget").value;
+    var showReset = document.getElementById ('resetDown'); 
+	showReset.style.display = "inline-block";
+	var showStart = document.getElementById ('startDown'); 
+	showStart.style.display = "inline-block";
     if(countTarget < 60) {
     	secondsDown = countTarget;
     }
