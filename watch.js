@@ -7,7 +7,7 @@ function isInt(n) {
 }
 function setTimer() {
     countTarget = document.getElementById("countTarget").value;
-    if(countTarget <= 0 || !isInt(parseInt(countTarget))) {
+    if(countTarget <= 0 || !isInt(parseInt(countTarget)) || countTarget.indexOf(".") != -1) {
     	alert("Please enter a positive integer");
     }
     else {

@@ -4,7 +4,7 @@ var getSecs, getMins, getHours, getDays, origTime;
 var countTarget;
 function setDownTimer() {
     countTarget = document.getElementById("countTarget").value;
-    if(isInt(parseInt(countTarget)) && countTarget > 0) {
+    if(isInt(parseInt(countTarget)) && countTarget > 0 && countTarget.indexOf(".") == -1) {
     	var showReset = document.getElementById ('resetDown'); 
 		showReset.style.display = "inline-block";
 		var showStart = document.getElementById ('startDown'); 
