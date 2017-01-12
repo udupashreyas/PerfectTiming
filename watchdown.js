@@ -35,7 +35,7 @@ function setDownTimer() {
 	origTime = 'Time : ' + getDays + getHours + getMins + getSecs;
 }
 function startDownWatch( ) {
-	if ( secondsDown === -1 && minutesDown !== 0 && hoursDown !== 0 && daysDown !== 0 ) { 
+	if ( secondsDown === -1 && (minutesDown !== 0 || hoursDown !== 0 || daysDown !== 0 )) { 
 		secondsDown = 59; 
 		minutesDown = minutesDown - 1;
 	}
@@ -54,7 +54,7 @@ function startDownWatch( ) {
 	var x = document .getElementById("timerDown");
 	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs; 
 	secondsDown--;
-	if(secondsDown + 1 === 0) {
+	if(secondsDown + 1 === 0 && minutesDown === 0 && hoursDown === 0 && daysDown === 0) {
 		var hideStart = document.getElementById ('startDown'); 
 		hideStart.style.display = "none"; 
 		var hideStop = document.getElementById ("stopDown"); 

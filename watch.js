@@ -8,6 +8,8 @@ function setTimer() {
 	showReset.style.display = "inline-block";
 	var showStart = document.getElementById ('start'); 
 	showStart.style.display = "inline-block";
+	var hideTarget = document.getElementById ('target'); 
+	hideTarget.style.display = "none"; 
 	seconds = 0; 
 	minutes = 0; 
 	hours = 0;
@@ -40,7 +42,7 @@ function startUpWatch( ) {
 	var x = document .getElementById("timer");
 	x.innerHTML = 'Time : ' + getDays + getHours + getMins + getSecs; 
 	seconds++;
-	if(seconds - 1 == countTarget) {
+	if((days * 24 * 3600 + hours * 3600 + minutes * 60 + seconds) - 1 == countTarget) {
 		var hideStart = document.getElementById ('start'); 
 		hideStart.style.display = "none"; 
 		var hideStop = document.getElementById ("stop"); 
